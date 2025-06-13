@@ -14,6 +14,7 @@
 *.svclog
 *.scc
 Debug/
+[Oo]bj/
 
 # Node modules
 node_modules/

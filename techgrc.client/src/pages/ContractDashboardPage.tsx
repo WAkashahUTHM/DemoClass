@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Grid, Paper, Typography, Button, CircularProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { ContractDTO, SupplierDTO } from "../models/contractModels"; // Importiere die DTOs
+import { ContractDTO } from "../models/contractModels"; // Importiere die DTOs
 
 const ContractDashboardPage: React.FC = () => {
     const [contracts, setContracts] = useState<ContractDTO[] | null>(null);
@@ -25,6 +25,10 @@ const ContractDashboardPage: React.FC = () => {
 
     const handleNav = () => {
         window.location.href = "/contract";
+    };
+
+    const handleEdit = (contractId: string) => {
+        window.location.href = `/contract/${contractId}`;
     };
 
     if (loading) {
@@ -66,8 +70,8 @@ const ContractDashboardPage: React.FC = () => {
                                         <TableCell>{new Date(contract.startDate).toLocaleDateString()}</TableCell>
                                         <TableCell>{new Date(contract.endDate).toLocaleDateString()}</TableCell>
                                         <TableCell>
-                                            <Button variant="contained" color="primary" onClick={() => alert("Edit contract")}>
-                                                Edit
+                                            <Button variant="contained" color="primary" onClick={() => handleEdit(contract.contractId)}>
+                                                View
                                             </Button>
                                         </TableCell>
                                     </TableRow>

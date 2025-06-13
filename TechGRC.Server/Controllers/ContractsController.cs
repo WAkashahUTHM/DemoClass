@@ -19,34 +19,15 @@ namespace TechGRC.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllContracts()
         {
-            return Ok(
-                new[]{
-                    new ContractDTO
-                    {
-                        ContractId = "agaaegaeg2141",
-                        Title = "Vertrag 1",
-                        Description = "Beschreibung des Vertrags 1",
-                        StartDate = "2023-01-01T00:00:00Z",
-                        EndDate = "2024-01-01T00:00:00Z",
-                        Supplier = new SupplierDTO
-                        {
-                            SupplierId = "asfgag13515",
-                            Name = "Lieferant 1",
-                            Category = "Some category",
-                            ContactInfo = "Lieferant 1 Kontaktinformationen"
-                        }
-                    },
-                }
-            );
-            // try
-            // {
-            //     var contracts = await _contractService.GetAllContractsAsync();
-            //     return Ok(contracts);
-            // }
-            // catch (Exception ex)
-            // {
-            //     return BadRequest(ex.Message);
-            // }
+            try
+            {
+                var contracts = await _contractService.GetAllContractsAsync();
+                return Ok(contracts);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // Endpoint zum Abrufen eines bestimmten Vertrags

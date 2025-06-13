@@ -4,6 +4,8 @@ import { ToastContainer } from "react-toastify";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import ContractManagementPage from "./pages/ContractManagementPage"; 
 import ContractDashboardPage from "./pages/ContractDashboardPage";
+import GptDemoPage from "./pages/GptDemoPage";
+import ContractFormPage from "./pages/ContractFormPage";
 
 const theme = createTheme();
 
@@ -19,6 +21,18 @@ const App: React.FC = () => {
             path: "/contract",
             element: (
                 <ContractManagementPage />
+            ),
+        },
+        {
+            path: "/contract/:id",
+            element: (
+                <ContractFormPage />
+            ),
+        },
+        {
+            path: "/gptdemo",
+            element: (
+                <GptDemoPage />
             ),
         }
     ]);
